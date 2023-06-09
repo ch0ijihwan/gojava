@@ -21,8 +21,8 @@
     <div class="row">
         <div class="col">
             <button class="w-100 btn btn-secondary btn-lg" type="button"
-                    onclick="location.href='/items'">
-                상품 관리
+                    onclick="location.href='/workout/workouts'">
+                운동 기록
             </button>
         </div>
         <div class="col">

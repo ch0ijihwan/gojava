@@ -6,6 +6,7 @@ import com.example.demo.workout.request.WorkoutRequestDto;
 import com.example.demo.workout.response.WorkoutResponseDto;
 import com.example.demo.workout.service.WorkoutService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/workout")
 public class WorkoutController {
 
@@ -46,9 +47,8 @@ public class WorkoutController {
 
     @GetMapping("/workouts")
     public String getWorkouts(Model model, @Login Member member) {
-
         List<WorkoutResponseDto> workouts = workoutService.getWorkouts(member);
         model.addAttribute("workouts", workouts);
-        return "workouts";
+        return "workout/workouts";
     }
 }
