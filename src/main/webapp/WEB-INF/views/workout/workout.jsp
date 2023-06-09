@@ -6,6 +6,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Workout Request</title>
+    <style>
+        /* CSS 스타일을 여기에 추가합니다 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        td {
+            padding: 8px;
+        }
+
+        td:first-child {
+            font-weight: bold;
+            text-align: right;
+        }
+
+        td:last-child {
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
 <h2>Workout Request Details</h2>
