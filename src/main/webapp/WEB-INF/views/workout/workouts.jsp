@@ -5,18 +5,56 @@
 <html>
 <head>
     <title>Title</title>
+    <style>
+        /* CSS 스타일을 여기에 추가합니다 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #eee;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        a {
+            color: #337ab7;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-<h1>운동  정보 제출 결과 페이지입니다.</h1>
+<h1>운동 정보 제출 결과 페이지입니다.</h1>
 <hr>
 <table border="1">
     <tr>
-<%--        <th><spring:message code="bookId"/></th>--%>
-<%--        <th><spring:message code="bookName" /></th>--%>
-<%--        <th><spring:message code="publisher" /></th>--%>
-<%--        <th><spring:message code="price"/></th>--%>
-<%--        <th><spring:message code="bookPart" /></th>--%>
-<%--        <th><spring:message code="imageName" /></th>--%>
+        <th>운동 부위</th>
+        <th>세트 수</th>
+        <th>무게</th>
+        <th>횟수</th>
+        <th>날짜</th>
+        <th>완료 여부</th>
     </tr>
     <c:forEach var="workout" items="${workouts}">
         <tr>
@@ -28,10 +66,8 @@
             <td>${workout.done}</td>
         </tr>
     </c:forEach>
-
 </table>
 <hr>
-<%--<a href="/book">도서 정보 입력 페이지</a>--%>
 <a href="/">처음으로 돌아가기</a>
 </body>
 </html>

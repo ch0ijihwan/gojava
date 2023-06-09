@@ -26,8 +26,8 @@ public class WorkoutController {
     }
 
     @GetMapping
-    public String workoutForm(@ModelAttribute("addWorkoutForm") Form form) {
-        return "login/loginForm";
+    public String workoutForm(@ModelAttribute("addWorkoutForm") WorkoutRequestDto workoutRequestDto) {
+        return "workout/addWorkoutForm";
     }
 
     @PostMapping
