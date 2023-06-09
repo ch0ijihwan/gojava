@@ -1,5 +1,6 @@
 package com.example.demo.workout.controller;
 
+import com.example.demo.login.LoginForm;
 import com.example.demo.member.domain.Member;
 import com.example.demo.web.resovler.Login;
 import com.example.demo.workout.request.WorkoutRequestDto;
@@ -24,9 +25,14 @@ public class WorkoutController {
         this.workoutService = workoutService;
     }
 
+    @GetMapping
+    public String workoutForm(@ModelAttribute("addWorkoutForm") Form form) {
+        return "login/loginForm";
+    }
+
     @PostMapping
     public String write(@Login Member member, @Validated @ModelAttribute WorkoutRequestDto workoutRequestDto, BindingResult bindingResult
-    ,Model model) {
+            , Model model) {
 
         if (bindingResult.hasErrors()) {
             return "workout/addWorkoutForm";

@@ -2,6 +2,7 @@ package com.example.demo.login;
 
 import com.example.demo.member.domain.Member;
 import com.example.demo.web.login.SessionConst;
+import com.example.demo.workout.request.WorkoutRequestDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,8 +25,8 @@ public class LoginController {
 
 
     @GetMapping("/login")
-    public String loginForm(@ModelAttribute("loginForm") LoginForm form) {
-        return "login/loginForm";
+    public String loginForm(@ModelAttribute("addWorkoutForm") WorkoutRequestDto workoutRequestDto) {
+        return "workout/addWorkoutForm";
     }
 
     @PostMapping("/login")
