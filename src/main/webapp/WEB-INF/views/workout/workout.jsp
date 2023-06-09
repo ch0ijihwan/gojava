@@ -34,6 +34,16 @@
         td:last-child {
             text-align: left;
         }
+
+        .button {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #337ab7;
+            color: #fff;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -60,5 +70,7 @@
         <td><c:out value="${workout.getDate()}"/></td>
     </tr>
 </table>
+<a href="/workouts" class="button" onclick="event.preventDefault(); document.getElementById('workouts-form').submit();">workouts 목록으로 가기</a>
+<form id="workouts-form" action="/workout/workouts" method="get" style="display: none;"></form>
 </body>
 </html>

@@ -1,7 +1,6 @@
-<%--label.properties--%>
-<%@ page contentType="text/html; charset=utf-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Title</title>
@@ -42,6 +41,32 @@
             color: #337ab7;
             text-decoration: none;
         }
+
+        .button {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #337ab7;
+            color: #fff;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .completed {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+        .completed.true {
+            background-color: #00cc00;
+        }
+
+        .completed.false {
+            background-color: #ff0000;
+        }
     </style>
 </head>
 <body>
@@ -63,11 +88,22 @@
             <td>${workout.weight}</td>
             <td>${workout.count}</td>
             <td>${workout.date}</td>
-            <td>${workout.done}</td>
+            <td>
+                <span class="completed ${workout.done ? 'true' : 'false'}"></span>
+                <c:choose>
+                    <c:when test="${workout.done}">
+                        성공!
+                    </c:when>
+                    <c:otherwise>
+                        실패!
+                    </c:otherwise>
+                </c:choose>
+            </td>
         </tr>
     </c:forEach>
 </table>
 <hr>
-<a href="/">처음으로 돌아가기</a>
+<a href="/" class="button">처음으로 돌아가기</a>
+<a href="/workout" class="button">새로운 운동계획 등록</a>
 </body>
 </html>

@@ -1,6 +1,5 @@
 package com.example.demo.workout.controller;
 
-import com.example.demo.login.LoginForm;
 import com.example.demo.member.domain.Member;
 import com.example.demo.web.resovler.Login;
 import com.example.demo.workout.request.WorkoutRequestDto;
