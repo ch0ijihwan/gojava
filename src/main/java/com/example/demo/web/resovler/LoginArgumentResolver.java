@@ -13,7 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Component
-public class ArgumentResolver implements HandlerMethodArgumentResolver {
+public class LoginArgumentResolver implements HandlerMethodArgumentResolver {
+
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
         boolean hasLoginAnnotation = parameter.hasParameterAnnotation(Login.class);

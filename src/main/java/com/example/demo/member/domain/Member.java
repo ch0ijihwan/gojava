@@ -16,10 +16,21 @@ public class Member {
 
     private String password;
 
+    public Member(Long id, String loginId, String name, String password) {
+        this.id = id;
+        this.loginId = loginId;
+        this.name = name;
+        this.password = password;
+    }
+
     public Member(String loginId, String name, String password) {
         this.loginId = loginId;
         this.name = name;
         this.password = password;
+    }
+
+    public Member() {
+
     }
 
     public Long getId() {

@@ -23,15 +23,14 @@
         <h2>로그인</h2>
     </div>
 
-    <form action="item.html" method="post">
-
+    <form action="login" method="post">
         <div>
             <label for="loginId">로그인 ID</label>
-            <input type="text" id="loginId" name="loginId" class="form-control"
+            <input type="text" id="loginId" name="loginId" class="form-control"/>
         </div>
         <div>
             <label for="password">비밀번호</label>
-            <input type="password" id="password" name="password" class="form-control"
+            <input type="password" id="password" name="password" class="form-control"/>
         </div>
 
         <hr class="my-4">

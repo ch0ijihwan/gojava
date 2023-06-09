@@ -1,6 +1,6 @@
 package com.example.demo.web;
 
-import com.example.demo.web.resovler.ArgumentResolver;
+import com.example.demo.web.resovler.LoginArgumentResolver;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,14 +16,16 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
-        resolvers.add(new ArgumentResolver());
+        resolvers.add(new LoginArgumentResolver());
     }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LoginCheckInterceptor())
+                .order(1)
                 .addPathPatterns("/**")
-                .excludePathPatterns("/", "/WEB-INF/views/**","/login","/error","/members/add");
+                .excludePathPatterns("/", "/WEB-INF/views/**","/login","/error","/members/add"
+                        ,"/css/**", "/*.ico");
     }
 
     @Bean

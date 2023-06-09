@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -28,11 +29,12 @@ public class WorkoutController {
     }
 
     @GetMapping("/{workoutId}")
-    public ResponseEntity<WorkoutResponseDto> get(@PathVariable Long workoutId) {
+    public String get(@PathVariable Long workoutId, Model model) {
         WorkoutResponseDto workoutResponseDto = workoutService.get(workoutId);
-        return ResponseEntity.ok()
-                .body(workoutResponseDto);
+        model.addAttribute("workout", workoutResponseDto);
+        return "workout";
     }
+
 
     @PostMapping("/{workoutId}/done")
     public ResponseEntity<WorkoutResponseDto> done(@PathVariable Long workoutId, @Login Member member) {
