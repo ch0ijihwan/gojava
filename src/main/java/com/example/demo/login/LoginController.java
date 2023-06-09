@@ -3,7 +3,6 @@ package com.example.demo.login;
 import com.example.demo.member.domain.Member;
 import com.example.demo.web.login.SessionConst;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -31,8 +30,8 @@ public class LoginController {
 
     @PostMapping("/login")
     public String login(@Validated @ModelAttribute("loginForm") LoginForm form,
-                              @RequestParam(defaultValue = "/") String redirectURL,
-                              HttpServletRequest request) {
+                        @RequestParam(defaultValue = "/") String redirectURL,
+                        HttpServletRequest request) {
         Member loginMember = loginService.login(form.getLoginId(), form.getPassword());
         //로그인 성공 처리
         //세션이 있으면 있는 세션 반환, 없으면 신규 세션을 반환
@@ -42,4 +41,5 @@ public class LoginController {
 
         return "redirect:" + redirectURL;
     }
+
 }

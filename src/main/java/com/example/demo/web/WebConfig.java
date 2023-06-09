@@ -1,10 +1,7 @@
 package com.example.demo.web;
 
-import com.example.demo.web.resovler.LoginArgumentResolver;
-import org.springframework.context.MessageSource;
-import org.springframework.context.annotation.Bean;
+import com.example.demo.web.resovler.LoginMemberArgumentResolver;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -16,7 +13,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
-        resolvers.add(new LoginArgumentResolver());
+        resolvers.add(new LoginMemberArgumentResolver());
     }
 
     @Override
@@ -24,15 +21,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(new LoginCheckInterceptor())
                 .order(1)
                 .addPathPatterns("/**")
-                .excludePathPatterns("/", "/WEB-INF/views/**","/login","/error","/members/add"
-                        ,"/css/**", "/*.ico");
+                .excludePathPatterns("/","/login", "/error", "/members/add", "/css/**", "/*.ico");
     }
 
-    @Bean
-    public MessageSource messageSource() {
-        ResourceBundleMessageSource ms = new ResourceBundleMessageSource();
-        ms.setBasenames("label");
-        ms.setDefaultEncoding("UTF-8");
-        return ms;
-    }
 }
