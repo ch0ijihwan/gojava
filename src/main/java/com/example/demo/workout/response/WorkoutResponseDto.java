@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 public class WorkoutResponseDto {
 
+    private Long id;
+
     private String part;
 
     private String setCount;
@@ -16,60 +18,41 @@ public class WorkoutResponseDto {
 
     private boolean done;
 
-    public WorkoutResponseDto(String part, String setCount, String weight, int count, LocalDate date, boolean done) {
+    public WorkoutResponseDto(Long id,String part, String setCount, String weight, int count, LocalDate date, boolean done) {
+        this.id = id;
         this.part = part;
         this.setCount = setCount;
         this.weight = weight;
         this.count = count;
         this.date = date;
         this.done = done;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getPart() {
         return part;
     }
 
-    public void setPart(String part) {
-        this.part = part;
-    }
-
     public String getSetCount() {
         return setCount;
-    }
-
-    public void setSetCount(String setCount) {
-        this.setCount = setCount;
     }
 
     public String getWeight() {
         return weight;
     }
 
-    public void setWeight(String weight) {
-        this.weight = weight;
-    }
-
     public int getCount() {
         return count;
     }
 
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public String getDate() {
+        return date.toString();
     }
 
     public boolean isDone() {
         return done;
-    }
-
-    public void setDone(boolean done) {
-        this.done = done;
     }
 }

@@ -20,7 +20,7 @@
     </tr>
     <c:forEach var="workout" items="${workouts}">
         <tr>
-            <td>${workout.part}</td>
+            <td><a href="/workout/${workout.id}">${workout.part}</a></td>
             <td>${workout.setCount}</td>
             <td>${workout.weight}</td>
             <td>${workout.count}</td>
@@ -28,6 +28,7 @@
             <td>${workout.done}</td>
         </tr>
     </c:forEach>
+
 </table>
 <hr>
 <%--<a href="/book">도서 정보 입력 페이지</a>--%>

@@ -12,23 +12,23 @@
 <table>
     <tr>
         <td>Part:</td>
-        <td><c:out value="${workout.part}" /></td>
+        <td><c:out value="${workout.getPart()}"/></td>
     </tr>
     <tr>
         <td>Set Count:</td>
-        <td><c:out value="${workout.setCount}" /></td>
+        <td><c:out value="${workout.getSetCount()}"/></td>
     </tr>
     <tr>
         <td>Weight:</td>
-        <td><c:out value="${workout.weight}" /></td>
+        <td><c:out value="${workout.getWeight()}"/></td>
     </tr>
     <tr>
         <td>Count:</td>
-        <td><c:out value="${workout.count}" /></td>
+        <td><c:out value="${workout.getCount()}"/></td>
     </tr>
     <tr>
         <td>Date:</td>
-        <td><fmt:formatDate value="${workout.date}" pattern="yyyy-MM-dd" /></td>
+        <td><c:out value="${workout.getDate()}"/></td>
     </tr>
 </table>
 </body>
