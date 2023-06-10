@@ -1,6 +1,7 @@
 package com.example.demo.member;
 
 import com.example.demo.member.domain.Member;
+import com.example.demo.member.request.MemberRequestDto;
 import com.example.demo.member.serivce.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -21,12 +22,12 @@ public class MemberController {
     }
 
     @GetMapping("/add")
-    public String addForm(@ModelAttribute("member") Member member) {
+    public String addForm( @Validated @ModelAttribute("member") MemberRequestDto member) {
         return "members/addMemberForm";
     }
 
     @PostMapping("/add")
-    public String save(@Validated @ModelAttribute Member member, BindingResult bindingResult) {
+    public String save(@Validated @ModelAttribute MemberRequestDto member, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "members/addMemberForm";
         }

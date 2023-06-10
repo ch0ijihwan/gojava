@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -18,29 +18,29 @@
 <body>
 
 <div class="container">
-
     <div class="py-5 text-center">
         <h2>회원 가입</h2>
     </div>
 
     <h4 class="mb-3">회원 정보 입력</h4>
 
-    <form action="" method="post">
+    <form:form action="" method="post" modelAttribute="memberRequestDto">
 
-
-        <div>
+        <div class="form-group">
             <label for="loginId">로그인 ID</label>
-            <input type="text" id="loginId" name="loginId" class="form-control"/>
+            <form:input path="loginId" id="loginId" class="form-control"/>
+            <form:errors path="loginId" cssClass="field-error"/>
         </div>
-        <div>
+        <div class="form-group">
             <label for="password">비밀번호</label>
-            <input type="password" id="password" name="password" class="form-control"/>
+            <form:password path="password" id="password" class="form-control"/>
+            <form:errors path="password" cssClass="field-error"/>
         </div>
-        <div>
+        <div class="form-group">
             <label for="name">이름</label>
-            <input type="text" id="name" name="name" class="form-control"/>
+            <form:input path="name" id="name" class="form-control"/>
+            <form:errors path="name" cssClass="field-error"/>
         </div>
-
 
         <hr class="my-4">
 
@@ -52,8 +52,8 @@
                 <button class="w-100 btn btn-secondary btn-lg" onclick="location.href='items.html'" type="button">취소</button>
             </div>
         </div>
+    </form:form>
 
-    </form>
 
 </div> <!-- /container -->
 </body>
