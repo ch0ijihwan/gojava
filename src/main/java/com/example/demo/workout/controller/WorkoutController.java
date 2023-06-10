@@ -51,13 +51,11 @@ public class WorkoutController {
 
 
     @PostMapping("/{workoutId}/done")
-    public ResponseEntity<WorkoutResponseDto> done(@PathVariable Long workoutId, @Login Member member) {
+    public ResponseEntity<WorkoutResponseDto> done(@PathVariable("workoutId") Long workoutId, @Login Member member) {
         workoutService.complete(workoutId, member);
 
-        return ResponseEntity.ok()
-                .build();
+        return ResponseEntity.ok().build();
     }
-
     @GetMapping("/workouts")
     public String getWorkouts(Model model, @Login Member member) {
         List<WorkoutResponseDto> workouts = workoutService.getWorkouts(member);

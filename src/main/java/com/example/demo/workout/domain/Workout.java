@@ -25,7 +25,7 @@ public class Workout {
 
     private boolean isDone;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Member member;
 
     public Workout(String part, String setCount, String weight, int count, LocalDate date, Member member) {
