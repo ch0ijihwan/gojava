@@ -27,7 +27,7 @@ public class Bmi {
 
     private LocalDate date;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Member member;
 
     @Override
@@ -43,9 +43,10 @@ public class Bmi {
         return Objects.hash(id);
     }
 
-    public Bmi(double weight, double height, LocalDate date) {
+    public Bmi(double weight, double height, LocalDate date, Member member) {
         this.weight = weight;
         this.height = height;
         this.date = date;
+        this.member = member;
     }
 }

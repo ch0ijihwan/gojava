@@ -1,13 +1,8 @@
 package com.example.demo.bmi;
 
 import com.example.demo.member.domain.Member;
-import com.example.demo.bmi.Bmi;
-import com.example.demo.bmi.BmiRequestDto;
-import com.example.demo.bmi.BmiResponseDto;
-import com.example.demo.bmi.BmiService;
-
-
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Comparator;
 import java.util.List;
@@ -23,24 +18,25 @@ public class BmiService {
         this.bmiRepository = bmiRepository;
     }
 
+    @Transactional
     public BmiResponseDto write(BmiRequestDto bmiRequestDto, Member member) {
-        Bmi bmi = new Bmi(bmiRequestDto.getWeight(), bmiRequestDto.getHeight(), bmiRequestDto.getDate());
+        Bmi bmi = new Bmi(bmiRequestDto.getWeight(), bmiRequestDto.getHeight(), bmiRequestDto.getDate(), member);
         Bmi save = bmiRepository.save(bmi);
-        return new BmiResponseDto(save.getId(), save.getWeight(), save.getHeight(), save.getDate());
+        return new BmiResponseDto(save.getWeight(), save.getHeight(), save.getDate());
     }
 
     public BmiResponseDto get(Long workoutId) {
         Bmi bmi = bmiRepository.findById(workoutId)
                 .orElseThrow(NullPointerException::new);
 
-        return new BmiResponseDto(bmi.getId(), bmi.getWeight(), bmi.getHeight(), bmi.getDate());
+        return new BmiResponseDto(bmi.getWeight(), bmi.getHeight(), bmi.getDate());
 
     }
 
     public List<BmiResponseDto> getBmi(Member member) {
         List<Bmi> byMember = bmiRepository.findByMember(member);
         return byMember.stream()
-                .map(bmi -> new BmiResponseDto(bmi.getId(), bmi.getWeight(), bmi.getHeight(), bmi.getDate()))
+                .map(bmi -> new BmiResponseDto(bmi.getWeight(), bmi.getHeight(), bmi.getDate()))
                 .sorted(Comparator.comparing(BmiResponseDto::getDate))
                 .collect(Collectors.toUnmodifiableList());
     }

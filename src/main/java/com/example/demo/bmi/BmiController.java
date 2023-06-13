@@ -37,10 +37,11 @@ public class BmiController {
         if (bindingResult.hasErrors()) {
             return "bmi/addBmiForm";
         }
+        bmiService.write(bmiRequestDto, member);
 
-        BmiResponseDto write = bmiService.write(bmiRequestDto, member);
-        model.addAttribute("bmi", write);
-        return "bmi/bmiResult";
+        List<BmiResponseDto> bmi = bmiService.getBmi(member);
+        model.addAttribute("bmi", bmi);
+        return "bmi/bmiResults";
     }
 
 
@@ -52,10 +53,10 @@ public class BmiController {
 //    }
 
 
-    @GetMapping("/bmiResult")
+    @GetMapping("/bmiResults")
     public String getBmi(Model model, @Login Member member) {
         List<BmiResponseDto> bmi = bmiService.getBmi(member);
         model.addAttribute("bmi", bmi);
-        return "bmi/bmiResult";
+        return "bmi/bmiResults";
     }
 }
