@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/members")
-public class MemberController {
+public class
+MemberController {
 
     private MemberService memberService;
 

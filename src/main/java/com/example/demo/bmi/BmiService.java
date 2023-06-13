@@ -28,8 +28,8 @@ public class BmiService {
         Bmi save = bmiRepository.save(bmi);
         return new BmiResponseDto(save.getId(), save.getWeight(), save.getHeight(), save.getDate());
     }
-    public BmiResponseDto get(Long workoutId) {
-        Bmi bmi = bmiRepository.findById(workoutId)
+    public BmiResponseDto get(Long bmiId) {
+        Bmi bmi = bmiRepository.findById(bmiId)
                 .orElseThrow(NullPointerException::new);
 
         return new BmiResponseDto(bmi.getId(), bmi.getWeight(), bmi.getHeight(), bmi.getDate());

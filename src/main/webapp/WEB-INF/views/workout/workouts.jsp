@@ -5,10 +5,11 @@
 <head>
     <title>Title</title>
     <style>
-        /* CSS 스타일을 여기에 추가합니다 */
+
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+            padding: 40px;
         }
 
         h1 {
@@ -18,6 +19,8 @@
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 20px;
+            border: 1px solid #ddd; /
         }
 
         th, td {
@@ -26,7 +29,10 @@
         }
 
         th {
-            background-color: #eee;
+            background-color: #f2f2f2;
+            font-weight: bold;
+            color: #333;
+            text-transform: uppercase;
         }
 
         tr:nth-child(even) {
@@ -102,7 +108,7 @@
         </tr>
     </c:forEach>
 </table>
-<hr>
+<br>
 <a href="/" class="button">처음으로 돌아가기</a>
 <a href="/workout" class="button">새로운 운동계획 등록</a>
 </body>

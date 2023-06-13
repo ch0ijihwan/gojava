@@ -92,6 +92,12 @@
                 <span style="white-space: nowrap;">운동기록</span>
             </button>
         </div>
+        <div class="col">
+            <button class="w-100 btn btn-secondary btn-lg" type="button"
+                    onclick="location.href='/bmi/bmiResult'">
+                <span style="white-space: nowrap;">bmi기록</span>
+            </button>
+        </div>
         <div style="padding: 10px"></div>
         <div class="col">
             <form action="/logout" method="post">

@@ -25,8 +25,8 @@ public class BmiController {
     }
 
     @GetMapping
-    public String workoutForm(@ModelAttribute("addWorkoutForm") BmiResponseDto bmiResponseDto) {
-        return "workout/addWorkoutForm";
+    public String bmiForm(@ModelAttribute("addBmiForm") BmiRequestDto bmiRequestDto) {
+        return "bmi/addBmiForm";
     }
 
     @PostMapping
@@ -35,28 +35,28 @@ public class BmiController {
 
         if (bindingResult.hasErrors()) {
 
-            return "workout/addWorkoutForm";
+            return "bmi/addBmiForm";
         }
 
         BmiResponseDto write = bmiService.write(bmiRequestDto, member);
 
-        model.addAttribute("workout", write);
-        return "workout/workout";
+        model.addAttribute("bmi", write);
+        return "bmi/bmiResult";
     }
 
-    @GetMapping("/{bmiId}")
-    public String get(@PathVariable Long bmiId, Model model) {
-        BmiResponseDto bmiResponseDto = bmiService.get(bmiId);
-        model.addAttribute("workout", bmiResponseDto);
-        return "bmi/showbmi";
-    }
+//    @GetMapping("/{bmiId}")
+//    public String get(@PathVariable Long bmiId, Model model) {
+//        BmiResponseDto bmiResponseDto = bmiService.get(bmiId);
+//        model.addAttribute("bmi", bmiResponseDto);
+//        return "bmi/showBmi";
+//    }
 
 
 
-    @GetMapping("/workouts")
+    @GetMapping("/bmiResult")
     public String getBmi(Model model, @Login Member member) {
-        List<BmiResponseDto> workouts = bmiService.getBmi(member);
-        model.addAttribute("workouts", workouts);
-        return "workout/workouts";
+        List<BmiResponseDto> bmi = bmiService.getBmi(member);
+        model.addAttribute("bmi", bmi);
+        return "bmi/bmiResult";
     }
 }
