@@ -12,4 +12,10 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(500)
                 .body(e.getMessage());
     }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> handleBusinessException2(final Exception e) {
+        return ResponseEntity.status(400)
+                .body(e.getMessage());
+    }
 }

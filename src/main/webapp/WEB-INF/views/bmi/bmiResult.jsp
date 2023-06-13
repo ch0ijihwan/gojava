@@ -23,7 +23,7 @@
         </tr>
     </c:forEach>
 </table>
-<a href="/bmi" class="button">새로운 운동계획 등록</a>
+<a href="/bmi"  class="button">새로운 bmi 등록</a>
 
 <!-- Add your graph visualization here using a JavaScript library like Chart.js -->
 </body>

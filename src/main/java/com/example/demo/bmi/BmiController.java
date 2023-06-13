@@ -2,16 +2,16 @@ package com.example.demo.bmi;
 
 import com.example.demo.member.domain.Member;
 import com.example.demo.web.resovler.Login;
-import com.example.demo.workout.request.WorkoutRequestDto;
-import com.example.demo.workout.response.WorkoutResponseDto;
-import com.example.demo.workout.service.WorkoutService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -25,24 +25,24 @@ public class BmiController {
     }
 
     @GetMapping
-    public String bmiForm(@ModelAttribute("addBmiForm") BmiRequestDto bmiRequestDto) {
+    public String bmiForm(Model model) {
+        model.addAttribute("bmiForm", new BmiRequestDto(0.0,0.0, LocalDate.now()));
         return "bmi/addBmiForm";
     }
 
     @PostMapping
-    public String write(@Login Member member, @Validated @ModelAttribute BmiRequestDto bmiRequestDto, BindingResult bindingResult
-            , Model model) {
+    public String write(@Login Member member, @Valid @ModelAttribute("bmiForm") BmiRequestDto bmiRequestDto,
+                        BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
-
             return "bmi/addBmiForm";
         }
 
         BmiResponseDto write = bmiService.write(bmiRequestDto, member);
-
         model.addAttribute("bmi", write);
         return "bmi/bmiResult";
     }
+
 
 //    @GetMapping("/{bmiId}")
 //    public String get(@PathVariable Long bmiId, Model model) {
@@ -50,7 +50,6 @@ public class BmiController {
 //        model.addAttribute("bmi", bmiResponseDto);
 //        return "bmi/showBmi";
 //    }
-
 
 
     @GetMapping("/bmiResult")

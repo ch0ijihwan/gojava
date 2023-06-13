@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Add BMI Record</h1>
-<form action="/bmiResult" method="POST">
+<form:form action="/bmi" method="POST" modelAttribute="bmiForm">
     <table>
         <tr>
             <td>Date:</td>
@@ -25,6 +25,6 @@
             <td colspan="2"><input type="submit" value="Submit" /></td>
         </tr>
     </table>
-</form>
+</form:form>
 </body>
 </html>
