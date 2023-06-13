@@ -34,8 +34,13 @@ public class WorkoutController {
             , Model model) {
 
         if (bindingResult.hasErrors()) {
+            // count가 200 이상인 경우 에러 처리
+            if (workoutRequestDto.getCount() >= 200) {
+                bindingResult.rejectValue("count", "exceeded.max.count", "운동 횟수는 200을 초과할 수 없습니다.");
+            }
             return "workout/addWorkoutForm";
         }
+
         WorkoutResponseDto write = workoutService.write(workoutRequestDto, member);
 
         model.addAttribute("workout", write);

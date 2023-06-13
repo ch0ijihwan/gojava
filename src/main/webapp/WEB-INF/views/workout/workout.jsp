@@ -71,6 +71,8 @@
     </tr>
 </table>
 <a href="/workouts" class="button" onclick="event.preventDefault(); document.getElementById('workouts-form').submit();">workouts 목록으로 가기</a>
+<a href="/workout/${workout.getId()}/done" class="button">완료 여부 수정하기</a>
+
 <form id="workouts-form" action="/workout/workouts" method="get" style="display: none;"></form>
 </body>
 </html>
