@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @Service
 public class BmiService {
 
-    private final BmiRepository bmiRepository ;
+    private final BmiRepository bmiRepository;
 
     public BmiService(BmiRepository bmiRepository) {
 
@@ -28,8 +28,9 @@ public class BmiService {
         Bmi save = bmiRepository.save(bmi);
         return new BmiResponseDto(save.getId(), save.getWeight(), save.getHeight(), save.getDate());
     }
-    public BmiResponseDto get(Long bmiId) {
-        Bmi bmi = bmiRepository.findById(bmiId)
+
+    public BmiResponseDto get(Long workoutId) {
+        Bmi bmi = bmiRepository.findById(workoutId)
                 .orElseThrow(NullPointerException::new);
 
         return new BmiResponseDto(bmi.getId(), bmi.getWeight(), bmi.getHeight(), bmi.getDate());
@@ -39,7 +40,7 @@ public class BmiService {
     public List<BmiResponseDto> getBmi(Member member) {
         List<Bmi> byMember = bmiRepository.findByMember(member);
         return byMember.stream()
-                .map(bmi -> new BmiResponseDto(bmi.getId(),bmi.getWeight(), bmi.getHeight(), bmi.getDate()))
+                .map(bmi -> new BmiResponseDto(bmi.getId(), bmi.getWeight(), bmi.getHeight(), bmi.getDate()))
                 .sorted(Comparator.comparing(BmiResponseDto::getDate))
                 .collect(Collectors.toUnmodifiableList());
     }

@@ -1,11 +1,18 @@
 package com.example.demo.workout.domain;
 
 import com.example.demo.member.domain.Member;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class Workout {
 
     @Id
@@ -35,50 +42,20 @@ public class Workout {
         this.count = count;
         this.date = date;
         this.member = member;
-        this.isDone = false;
     }
 
-    public Workout() {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        Workout workout = (Workout) o;
+
+        return Objects.equals(id, workout.id);
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getPart() {
-        return part;
-    }
-
-    public String getSetCount() {
-        return setCount;
-    }
-
-    public String getWeight() {
-        return weight;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public Member getMember() {
-        return member;
-    }
-
-    public void setMember(Member member) {
-        this.member = member;
-    }
-
-    public boolean isDone() {
-        return isDone;
-    }
-
-    public void setDone(boolean done) {
-        isDone = done;
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 }

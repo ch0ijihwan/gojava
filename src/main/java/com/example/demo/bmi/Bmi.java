@@ -1,12 +1,18 @@
 package com.example.demo.bmi;
 
 import com.example.demo.member.domain.Member;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class Bmi {
 
     @Id
@@ -37,56 +43,9 @@ public class Bmi {
         return Objects.hash(id);
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
-    public void setHeight(double height) {
-        this.height = height;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
     public Bmi(double weight, double height, LocalDate date) {
         this.weight = weight;
         this.height = height;
         this.date = date;
     }
-
-    public Bmi() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-
-    public double getWeight() {
-        return weight;
-    }
-
-    public double getHeight() {
-        return height;
-    }
-
-
-    public Member getMember() {
-        return member;
-    }
-
-    public void setMember(Member member) {
-        this.member = member;
-    }
-
-
 }
