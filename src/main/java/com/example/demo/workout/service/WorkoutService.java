@@ -6,6 +6,7 @@ import com.example.demo.workout.repository.WorkoutRepository;
 import com.example.demo.workout.request.WorkoutRequestDto;
 import com.example.demo.workout.response.WorkoutResponseDto;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Comparator;
 import java.util.List;
@@ -20,6 +21,7 @@ public class WorkoutService {
         this.workoutRepository = workoutRepository;
     }
 
+    @Transactional
     public WorkoutResponseDto write(WorkoutRequestDto workoutRequestDto, Member member) {
         Workout workout = new Workout(workoutRequestDto.getPart(), workoutRequestDto.getSetCount(), workoutRequestDto.getWeight()
                 , workoutRequestDto.getCount(), workoutRequestDto.getDate(), member);
@@ -27,6 +29,7 @@ public class WorkoutService {
         return new WorkoutResponseDto(workout.getId(), workout.getPart(), workout.getSetCount(), workout.getWeight(), workout.getCount(), workout.getDate(), workout.isDone());
     }
 
+    @Transactional(readOnly = true)
     public WorkoutResponseDto get(Long workoutId) {
         Workout workout = workoutRepository.findById(workoutId)
                 .orElseThrow(NullPointerException::new);
@@ -36,6 +39,7 @@ public class WorkoutService {
 
     }
 
+    @Transactional
     public void complete(Long workoutId, Member member) {
         Workout workout = workoutRepository.findById(workoutId)
                 .orElseThrow(NullPointerException::new);
@@ -44,6 +48,7 @@ public class WorkoutService {
         }
     }
 
+    @Transactional(readOnly = true)
     public List<WorkoutResponseDto> getWorkouts(Member member) {
         List<Workout> byMember = workoutRepository.findByMember(member);
         return byMember.stream()

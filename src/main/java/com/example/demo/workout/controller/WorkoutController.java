@@ -5,7 +5,6 @@ import com.example.demo.web.resovler.Login;
 import com.example.demo.workout.request.WorkoutRequestDto;
 import com.example.demo.workout.response.WorkoutResponseDto;
 import com.example.demo.workout.service.WorkoutService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -56,11 +55,10 @@ public class WorkoutController {
 
 
     @PostMapping("/{workoutId}/done")
-    public ResponseEntity<WorkoutResponseDto> done(@PathVariable Long workoutId, @Login Member member) {
+    public String done(@PathVariable("workoutId") Long workoutId, @Login Member member) {
         workoutService.complete(workoutId, member);
 
-        return ResponseEntity.ok()
-                .build();
+        return "redirect:/workout/workouts";
     }
 
     @GetMapping("/workouts")

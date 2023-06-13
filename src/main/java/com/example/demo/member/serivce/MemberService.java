@@ -2,7 +2,9 @@ package com.example.demo.member.serivce;
 
 import com.example.demo.member.domain.Member;
 import com.example.demo.member.repository.MemberRepository;
+import com.example.demo.member.request.MemberRequestDto;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class MemberService {
@@ -12,8 +14,9 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
-
-    public void save(Member member) {
+    @Transactional
+    public void save(MemberRequestDto memberDto) {
+        Member member = new Member(memberDto.getLoginId(), memberDto.getName(), memberDto.getPassword());
         memberRepository.save(member);
     }
 }

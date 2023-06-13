@@ -74,20 +74,20 @@
 <hr>
 <table border="1">
     <tr>
-        <th>운동 부위</th>
+        <th>날짜</th>
         <th>세트 수</th>
         <th>무게</th>
         <th>횟수</th>
-        <th>날짜</th>
+        <th>운동 부위</th>
         <th>완료 여부</th>
     </tr>
     <c:forEach var="workout" items="${workouts}">
         <tr>
-            <td><a href="/workout/${workout.id}">${workout.part}</a></td>
+            <td><a href="/workout/${workout.id}">${workout.date}</a></td>
             <td>${workout.setCount}</td>
             <td>${workout.weight}</td>
             <td>${workout.count}</td>
-            <td>${workout.date}</td>
+            <td>${workout.part}</td>
             <td>
                 <span class="completed ${workout.done ? 'true' : 'false'}"></span>
                 <c:choose>

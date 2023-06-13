@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Workout Request</title>
+    <title>Workout Details</title>
     <style>
         /* CSS 스타일을 여기에 추가합니다 */
         body {
@@ -47,32 +46,49 @@
     </style>
 </head>
 <body>
-<h2>Workout Request Details</h2>
+<h2>Workout Details</h2>
 <table>
     <tr>
         <td>Part:</td>
-        <td><c:out value="${workout.getPart()}"/></td>
+        <td><c:out value="${workout.part}"/></td>
     </tr>
     <tr>
         <td>Set Count:</td>
-        <td><c:out value="${workout.getSetCount()}"/></td>
+        <td><c:out value="${workout.setCount}"/></td>
     </tr>
     <tr>
         <td>Weight:</td>
-        <td><c:out value="${workout.getWeight()}"/></td>
+        <td><c:out value="${workout.weight}"/></td>
     </tr>
     <tr>
         <td>Count:</td>
-        <td><c:out value="${workout.getCount()}"/></td>
+        <td><c:out value="${workout.count}"/></td>
     </tr>
     <tr>
         <td>Date:</td>
-        <td><c:out value="${workout.getDate()}"/></td>
+        <td><c:out value="${workout.date}"/></td>
     </tr>
 </table>
-<a href="/workouts" class="button" onclick="event.preventDefault(); document.getElementById('workouts-form').submit();">workouts 목록으로 가기</a>
-<a href="/workout/${workout.getId()}/done" class="button">완료 여부 수정하기</a>
 
-<form id="workouts-form" action="/workout/workouts" method="get" style="display: none;"></form>
+<form id="complete-form" action="/workout/${workout.id}/done" method="post" style="display: none;"></form>
+<button class="button" onclick="event.preventDefault(); document.getElementById('complete-form').submit();">완료 처리</button>
+<a href="/workout/workouts" class="button">Workouts 목록으로 가기</a>
+
+<script>
+    window.addEventListener('load', function() {
+        const completeForm = document.getElementById('complete-form');
+        completeForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            fetch(completeForm.action, {
+                method: 'POST'
+            }).then(function() {
+                location.href = '/workout/workouts';
+            }).catch(function(error) {
+                console.error('Error:', error);
+            });
+        });
+    });
+</script>
+
 </body>
 </html>

@@ -22,6 +22,7 @@
 
         .container h2 {
             margin-bottom: 20px;
+
         }
 
         .row {
@@ -58,6 +59,7 @@
 
         hr {
             margin-top: 40px;
+
         }
     </style>
 </head>
@@ -73,19 +75,18 @@
             <button class="w-100 btn btn-secondary btn-lg" type="button"
                     onclick="location.href='members/add'">
                 <span style="white-space: nowrap;">회원가입</span>
+
             </button>
         </div>
         <div style="padding: 10px">     </div>
         <div class="col">
-            <button class="w-100 btn btn-dark btn-lg" type="button"
-                    onclick="location.href='/login'">
+            <button class="btn btn-dark btn-lg" type="button" onclick="location.href='/login'">
                 로그인
             </button>
         </div>
     </div>
 
     <hr class="my-4">
-
 </div> <!-- /container -->
 
 </body>

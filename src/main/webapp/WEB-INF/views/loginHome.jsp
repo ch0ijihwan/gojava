@@ -68,6 +68,7 @@
 
         .btn-secondary:hover, .btn-dark:hover {
             opacity: 0.8;
+
         }
     </style>
 </head>
@@ -99,6 +100,7 @@
                 </button>
             </form>
         </div>
+
     </div>
 
     <hr class="my-4">
