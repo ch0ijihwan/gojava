@@ -2,16 +2,14 @@ package com.example.demo.login;
 
 import com.example.demo.member.domain.Member;
 import com.example.demo.member.repository.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class LoginService {
+
     private final MemberRepository memberRepository;
-
-    public LoginService(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
-    }
-
     /*
         @return null 로그인 실패
          */
