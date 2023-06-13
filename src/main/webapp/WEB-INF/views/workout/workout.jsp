@@ -9,16 +9,19 @@
         /* CSS 스타일을 여기에 추가합니다 */
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 20px auto;
+            max-width: 600px;
         }
 
         h2 {
             color: #333;
+            text-align: center;
         }
 
         table {
             border-collapse: collapse;
             margin-top: 20px;
+            width: 100%;
         }
 
         td {
@@ -28,6 +31,7 @@
         td:first-child {
             font-weight: bold;
             text-align: right;
+            width: 30%;
         }
 
         td:last-child {
@@ -42,6 +46,7 @@
             border-radius: 4px;
             text-decoration: none;
             margin-top: 10px;
+            text-align: center;
         }
     </style>
 </head>
@@ -71,8 +76,10 @@
 </table>
 
 <form id="complete-form" action="/workout/${workout.id}/done" method="post" style="display: none;"></form>
-<button class="button" onclick="event.preventDefault(); document.getElementById('complete-form').submit();">완료 처리</button>
-<a href="/workout/workouts" class="button">Workouts 목록으로 가기</a>
+<div style="text-align: center;">
+    <button class="button" onclick="event.preventDefault(); document.getElementById('complete-form').submit();">완료 처리</button>
+    <a href="/workout/workouts" class="button">Workouts 목록으로 가기</a>
+</div>
 
 <script>
     window.addEventListener('load', function() {

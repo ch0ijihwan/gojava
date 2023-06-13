@@ -101,7 +101,7 @@
                         성공!
                     </c:when>
                     <c:otherwise>
-                        실패!
+                        미완료
                     </c:otherwise>
                 </c:choose>
             </td>

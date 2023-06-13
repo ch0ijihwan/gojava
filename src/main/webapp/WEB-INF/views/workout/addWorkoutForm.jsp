@@ -11,6 +11,7 @@
     body {
       font-family: Arial, sans-serif;
       margin: 20px;
+      text-align: center;
     }
 
     h2 {
@@ -25,6 +26,8 @@
       display: inline-block;
       width: 100px;
       font-weight: bold;
+      text-align: right;
+      margin-right: 10px;
     }
 
     input[type="text"],
@@ -32,6 +35,7 @@
     input[type="checkbox"] {
       width: 200px;
       margin-bottom: 10px;
+      padding: 5px;
     }
 
     input[type="submit"] {
