@@ -6,6 +6,7 @@ import com.example.demo.web.resovler.Login;
 import com.example.demo.workout.request.WorkoutRequestDto;
 import com.example.demo.workout.response.WorkoutResponseDto;
 import com.example.demo.workout.service.WorkoutService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,13 +18,10 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/workout")
+@RequiredArgsConstructor
 public class WorkoutController {
 
     private final WorkoutService workoutService;
-
-    public WorkoutController(WorkoutService workoutService) {
-        this.workoutService = workoutService;
-    }
 
     @GetMapping
     public String workoutForm(Model model) {

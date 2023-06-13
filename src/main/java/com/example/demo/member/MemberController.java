@@ -4,6 +4,7 @@ import com.example.demo.member.request.MemberRequestDto;
 import com.example.demo.member.serivce.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,8 +26,9 @@ MemberController {
     }
 
     @PostMapping("/add")
-    public String save(@Validated @ModelAttribute("memberRequestDto") MemberRequestDto memberRequestDto, BindingResult bindingResult) {
+    public String save(@Validated @ModelAttribute("memberRequestDto") MemberRequestDto memberRequestDto, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("bindingResult", bindingResult);
             return "members/addMemberForm";
         }
         memberService.save(memberRequestDto);

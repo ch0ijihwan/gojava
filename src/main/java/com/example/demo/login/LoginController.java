@@ -2,6 +2,7 @@ package com.example.demo.login;
 
 import com.example.demo.member.domain.Member;
 import com.example.demo.web.login.SessionConst;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,13 +15,10 @@ import javax.servlet.http.HttpSession;
 
 
 @Controller
+@RequiredArgsConstructor
 public class LoginController {
 
     private final LoginService loginService;
-
-    public LoginController(LoginService loginService) {
-        this.loginService = loginService;
-    }
 
 
     @GetMapping("/login")
