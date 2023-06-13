@@ -14,5 +14,7 @@ public class BmiResponseDto {
 
     private double height;
 
+    private double bmiRate;
+
     private LocalDate date;
 }

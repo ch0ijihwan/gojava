@@ -17,6 +17,7 @@
         <th>Date</th>
         <th>Weight</th>
         <th>Height</th>
+        <th>bmiRate</th>
         <!-- Add more columns if needed -->
     </tr>
     <c:forEach var="bmi" items="${bmi}">
@@ -24,6 +25,7 @@
             <td>${bmi.date}</td>
             <td>${bmi.weight}</td>
             <td>${bmi.height}</td>
+            <td>${bmi.bmiRate}</td>
             <!-- Add more columns if needed -->
         </tr>
     </c:forEach>
@@ -40,10 +42,12 @@
     var dates = [];
     var weights = [];
     var heights = [];
+    var bmiRate = [];
     <c:forEach var="bmi" items="${bmi}">
     dates.push("${bmi.date}");
     weights.push(${bmi.weight});
     heights.push(${bmi.height});
+    bmiRate.push(${bmi.bmiRate});
     </c:forEach>
 
     // Create the chart
@@ -66,6 +70,13 @@
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 1,
                     data: heights
+                },
+                {
+                    label: 'bmiRate',
+                    backgroundColor: 'rgba(95, 222, 235, 0.2)',
+                    borderColor: 'rgba(95, 222, 235, 1)',
+                    borderWidth: 1,
+                    data: bmiRate
                 }
             ]
         },

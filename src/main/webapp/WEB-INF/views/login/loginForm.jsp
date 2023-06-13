@@ -126,7 +126,7 @@
                 <button class="w-100 btn btn-primary btn-lg" type="submit">로그인</button>
             </div>
             <div class="col">
-                <button class="w-100 btn btn-secondary btn-lg" onclick="location.href='items.html'" type="button">취소</button>
+                <button class="w-100 btn btn-secondary btn-lg" onclick="location.href='/'" type="button">취소</button>
             </div>
         </div>
 
