@@ -5,6 +5,7 @@ import com.example.demo.workout.domain.Workout;
 import com.example.demo.workout.repository.WorkoutRepository;
 import com.example.demo.workout.request.WorkoutRequestDto;
 import com.example.demo.workout.response.WorkoutResponseDto;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,13 +14,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class WorkoutService {
 
     private final WorkoutRepository workoutRepository;
-
-    public WorkoutService(WorkoutRepository workoutRepository) {
-        this.workoutRepository = workoutRepository;
-    }
 
     @Transactional
     public WorkoutResponseDto write(WorkoutRequestDto workoutRequestDto, Member member) {
@@ -33,10 +31,8 @@ public class WorkoutService {
     public WorkoutResponseDto get(Long workoutId) {
         Workout workout = workoutRepository.findById(workoutId)
                 .orElseThrow(NullPointerException::new);
-
         return new WorkoutResponseDto(workout.getId(), workout.getPart(), workout.getSetCount(), workout.getWeight(),
                 workout.getCount(), workout.getDate(), workout.isDone());
-
     }
 
     @Transactional
@@ -57,5 +53,4 @@ public class WorkoutService {
                 .sorted(Comparator.comparing(WorkoutResponseDto::getDate))
                 .collect(Collectors.toUnmodifiableList());
     }
-
 }
