@@ -1,5 +1,6 @@
 package com.example.demo.workout.controller;
 
+import com.example.demo.bmi.BmiRequestDto;
 import com.example.demo.member.domain.Member;
 import com.example.demo.web.resovler.Login;
 import com.example.demo.workout.request.WorkoutRequestDto;
@@ -11,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -24,7 +26,8 @@ public class WorkoutController {
     }
 
     @GetMapping
-    public String workoutForm(@ModelAttribute("addWorkoutForm") WorkoutRequestDto workoutRequestDto) {
+    public String workoutForm(Model model) {
+        model.addAttribute("workoutForm", new WorkoutRequestDto( "", "", "", 0, LocalDate.now()));
         return "workout/addWorkoutForm";
     }
 
