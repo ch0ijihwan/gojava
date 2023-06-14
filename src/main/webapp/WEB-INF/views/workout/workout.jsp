@@ -77,7 +77,8 @@
 
 <form id="complete-form" action="/workout/${workout.id}/done" method="post" style="display: none;"></form>
 <div style="text-align: center;">
-    <button class="button" onclick="event.preventDefault(); document.getElementById('complete-form').submit();">완료 처리</button>
+    <button class="button" onclick="event.preventDefault();
+    document.getElementById('complete-form').submit();">완료 처리</button>
     <a href="/workout/workouts" class="button">Workouts 목록으로 가기</a>
 </div>
 
